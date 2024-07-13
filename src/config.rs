@@ -10,7 +10,9 @@ pub struct ServiceConfig {
     pub WATCHDOG_RS_BUILD_KEY: String,
     pub WATCHDOG_RS_DISCORD_WEBHOOK: String,
     pub WATCHDOG_RS_REPOSITORY_URL: String,
-    pub WATCHDOG_RS_BUILD_ID: String, // later add language and shit
+    pub WATCHDOG_RS_BUILD_ID: String,
+    pub WATCHDOG_RS_RUST_BUILD_COMMAND: String,
+    pub WATCHDOG_RS_RUST_TEST_COMMAND: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

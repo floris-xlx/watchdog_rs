@@ -40,11 +40,6 @@ pub async fn build(
         .and_then(|repository| repository.get("html_url"))
         .and_then(|repository_url| repository_url.as_str());
 
-    println!("{:?}", first_event);
-    println!("{:?}", build_key);
-    println!("{:?}", build_id);
-    println!("{:?}", repository_url);
-
     match parse_watchdog_rs_yml("watchdog_rs.yml") {
         Ok(services) => {
             for (service_name, service_config) in services {
