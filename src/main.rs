@@ -1,41 +1,44 @@
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{App, HttpServer};
 use dotenv::dotenv;
-use serde_json::json;
-use std::collections::HashMap;
 use std::env::var;
 use std::io::Result;
 
-#[get("/ping")]
-async fn index() -> impl Responder {
-    HttpResponse::Ok().json(json!({"message": "Hello world!"}))
-}
-
-#[post("/build")]
-async fn build(query: web::Query<HashMap<String, String>>) -> impl Responder {
-    dotenv().ok();
-    let required_build_key: String = var("BUILD_KEY").expect("BUILD_KEY must be set");
-
-    let default_build_id: String = "0".to_string();
-    let build_id: &String = query.get("build_id").unwrap_or(&default_build_id);
-
-    if let Some(build_key) = query.get("build_key") {
-        if build_key == &required_build_key {
-            return HttpResponse::Ok().json(json!(
-                {"message": "buidl!", "build_id": build_id}
-            ));
-        }
-    }
-    HttpResponse::Unauthorized().json(json!(
-        {"error": "Unauthorized"}
-    ))
-}
+use watchdog_rs::api::client::{build, index};
 
 #[actix_web::main]
 async fn main() -> Result<()> {
-    println!("\x1b[1;32mServer running\x1b[0m");
+    println!("\x1b[1;32mwatchdog_rs: Initializing server\x1b[0m");
+    let default_port: u16 = 4035;
 
-    HttpServer::new(|| App::new().service(index).service(build))
-        .bind(("127.0.0.1", 4035))?
-        .run()
-        .await
+    dotenv().ok();
+
+    let port: u16 = var("PORT")
+        .unwrap_or(default_port.to_string())
+        .parse()
+        .expect("PORT must be a valid u16");
+
+    let port_message: String = format!(
+        "\x1b[1;33mPORT ENV VAR wasn't set, defaulting to \x1b[1;33m{}\x1b[0m",
+        default_port
+    );
+
+    if var("PORT").is_err() {
+        println!("watchdog_rs: {}", port_message);
+    } else {
+        println!(
+            "\x1b[1;34mwatchdog_rs: Server attempting to bind to port {}\x1b[0m",
+            port
+        );
+    }
+
+    let server = HttpServer::new(|| App::new().service(index).service(build))
+        .bind(("127.0.0.1", port))?
+        .run();
+
+    println!(
+        "\x1b[1;32mwatchdog_rs: Server successfully started on port {}\x1b[0m",
+        port
+    );
+
+    server.await
 }
