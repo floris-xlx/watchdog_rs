@@ -8,6 +8,7 @@ description = "Watches your git repository and automatically deploys when tests 
 [dependencies]
 actix-web = "4.8.0"
 dotenv = "0.15.0"
+indicatif = "0.17.8"
 reqwest = "0.12.5"
 serde_json = "1.0.120"
 tokio = { version = "1.38.0", features = ["full"] }

@@ -1,15 +1,26 @@
 use actix_web::{App, HttpServer};
 use dotenv::dotenv;
+use indicatif::{ProgressBar, ProgressStyle};
 use std::env::var;
 use std::io::Result;
-
 use watchdog_rs::api::client::{build, index};
+
+fn set_progress_message(progress: &ProgressBar, message: &str) {
+    progress.set_message(message.to_string());
+    progress.inc(1);  // Ensure the progress bar updates immediately with the new message
+}
 
 #[actix_web::main]
 async fn main() -> Result<()> {
-    println!("\x1b[1;32mwatchdog_rs: Initializing server\x1b[0m");
-    let default_port: u16 = 4035;
+    let progress: ProgressBar = ProgressBar::new(100);
+    progress.set_style(
+        ProgressStyle::default_bar()
+            .template("{bar:40.cyan/blue} {msg}")
+            .expect("Failed to set progress bar template"),
+    );
+    set_progress_message(&progress, "Initializing server");
 
+    let default_port: u16 = 4035;
     dotenv().ok();
 
     let port: u16 = var("PORT")
@@ -17,28 +28,21 @@ async fn main() -> Result<()> {
         .parse()
         .expect("PORT must be a valid u16");
 
-    let port_message: String = format!(
-        "\x1b[1;33mPORT ENV VAR wasn't set, defaulting to \x1b[1;33m{}\x1b[0m",
-        default_port
-    );
-
     if var("PORT").is_err() {
-        println!("watchdog_rs: {}", port_message);
+        let message = format!("PORT ENV VAR wasn't set, defaulting to {}", default_port);
+        set_progress_message(&progress, &message);
     } else {
-        println!(
-            "\x1b[1;34mwatchdog_rs: Server attempting to bind to port {}\x1b[0m",
-            port
-        );
+        let message = format!("Server attempting to bind to port {}", port);
+        set_progress_message(&progress, &message);
     }
 
     let server = HttpServer::new(|| App::new().service(index).service(build))
         .bind(("127.0.0.1", port))?
         .run();
 
-    println!(
-        "\x1b[1;32mwatchdog_rs: Server successfully started on port {}\x1b[0m",
-        port
-    );
+    let message = format!("✔️   Server successfully started on port {}", port);
+    progress.finish_with_message(format!("{}", message));
+    println!("Listening for requests...");
 
     server.await
 }
