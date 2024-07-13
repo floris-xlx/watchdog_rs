@@ -1,0 +1,12 @@
+[package]
+name = "watchdog_rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["Floris @ xylex.ai"]
+description = "Watches your git repository and automatically deploys when tests are passing"
+
+[dependencies]
+actix-web = "4.8.0"
+reqwest = "0.12.5"
+serde_json = "1.0.120"
+tokio = { version = "1.38.0", features = ["full"] }
