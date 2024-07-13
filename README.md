@@ -4,7 +4,7 @@ port 4035
 
 
 # Exposing the port to a domain via NGINX
-```json
+```
 GNU nano 6.2 /etc/nginx/sites-available/WILDCARD.DOMAIN.TLD 
 
 server { 
