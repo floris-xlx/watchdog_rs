@@ -19,3 +19,32 @@ server {
     } 
 }
 ```
+
+# Logging builds & deploys to Discord webhook (optional)
+Set this env var with your chosen webhook log
+```env
+WATCHDOG_RS_DISCORD_WEBHOOK=https://discord.com/api/webhooks/xxxxxxxx
+```
+
+# Setting a build key
+As an auth measure, build_keys are mandatory
+```env
+WATCHDOG_RS_BUILD_KEY=xxxx
+```
+
+# Config `watchdog.rs` 
+You can add as many services as you need
+```yml
+services:
+  service_1:
+    WATCHDOG_RS_BUILD_KEY: "your_build_key_here"
+    WATCHDOG_RS_DISCORD_WEBHOOK: "your_discord_webhook_here"
+    WATCHDOG_RS_REPOSITORY_URL: "your_repository_url_here"
+
+  service_2:
+    WATCHDOG_RS_BUILD_KEY: "your_build_key_here"
+    WATCHDOG_RS_DISCORD_WEBHOOK: "your_discord_webhook_here"
+    WATCHDOG_RS_REPOSITORY_URL: "your_repository_url_here"
+
+  # Add more services as needed
+```

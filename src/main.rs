@@ -23,13 +23,13 @@ async fn main() -> Result<()> {
     let default_port: u16 = 4035;
     dotenv().ok();
 
-    let port: u16 = var("PORT")
+    let port: u16 = var("WATCHDOG_RS_PORT")
         .unwrap_or(default_port.to_string())
         .parse()
-        .expect("PORT must be a valid u16");
+        .expect("WATCHDOG_RS_PORT must be a valid u16");
 
-    if var("PORT").is_err() {
-        let message = format!("PORT ENV VAR wasn't set, defaulting to {}", default_port);
+    if var("WATCHDOG_RS_PORT").is_err() {
+        let message = format!("WATCHDOG_RS_PORT ENV VAR wasn't set, defaulting to {}", default_port);
         set_progress_message(&progress, &message);
     } else {
         let message = format!("Server attempting to bind to port {}", port);
@@ -42,7 +42,7 @@ async fn main() -> Result<()> {
 
     let message = format!("✔️   Server successfully started on port {}", port);
     progress.finish_with_message(format!("{}", message));
-    println!("Listening for requests...");
+    println!("watchdog_rs: Listening for requests...");
 
     server.await
 }

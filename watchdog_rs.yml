@@ -1,0 +1,14 @@
+services:
+  xylex_api:
+    WATCHDOG_RS_BUILD_KEY: "cc6dc748-b903-44f3-a949-15a7347640d9"
+    WATCHDOG_RS_DISCORD_WEBHOOK: "https://discord.com/api/webhooks/1261391310628192418/4bjvCATqfKN0u3FpHg6gJK1xUlwdLnbVKncsbvCI5T-28Fv9V_b_3XGRjmkElxgbNZu6"
+    WATCHDOG_RS_REPOSITORY_URL: "https://github.com/floris-xlx/watchdog_rs"
+    WATCHDOG_RS_BUILD_ID: "xylex_api"
+
+  xylex_cron:
+    WATCHDOG_RS_BUILD_KEY: "bddfc6fb-c345-4af6-96be-fba0f53d4b76"
+    WATCHDOG_RS_DISCORD_WEBHOOK: "https://discord.com/api/webhooks/1261391310628192418/4bjvCATqfKN0u3FpHg6gJK1xUlwdLnbVKncsbvCI5T-28Fv9V_b_3XGRjmkElxgbNZu6"
+    WATCHDOG_RS_REPOSITORY_URL: "https://github.com/floris-xlx/watchdog_rs"
+    WATCHDOG_RS_BUILD_ID: "xylex_cron"
+
+  # Add more services as needed
