@@ -53,8 +53,57 @@ pub fn message_template_schedule_build(
         "content": null,
         "embeds": [
         {
-        "title": "[1/8] | ⏳ Scheduling new build",
+        "title": "[0/8] | ⏳ Scheduling new build",
         "description": format!("I'm scheduling a new build for `{}`", build_id),
+        "color": 5975807,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
+            },
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
+            },
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
+        ],
+        "attachments": []
+    });
+
+    message.to_string()
+}
+
+
+pub fn message_template_starting_build(
+    build_id: &str,
+    repository_url: &str,
+    service_name: &str,
+) -> String {
+    let current_timestamp = Utc::now().to_rfc3339();
+
+    let message = json!({
+        "content": null,
+        "embeds": [
+        {
+        "title": "[1/8] | ⏳ Starting build",
+        "description": format!("Starting build `{}`", build_id),
         "color": 5975807,
         "fields": [
             {

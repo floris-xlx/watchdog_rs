@@ -11,6 +11,7 @@ use crate::log::{
     discord_log_webhook, message_template_build_failed, message_template_schedule_build,
     system_msg_webhook,
 };
+use crate::build::stages::stage_daemon;
 
 pub async fn schedule_build(
     repository_url: &str,
@@ -28,14 +29,10 @@ pub async fn schedule_build(
         }
     }
 
-    let build_failed_msg = message_template_build_failed(
-        build_id,
-        repository_url,
-        service_name,
-    );
+    let build_failed_msg: String = message_template_build_failed(build_id, repository_url, service_name);
 
-    let result: Result<(), IOError> =
-        environment::rust_environment(service_name, repository_with_key);
+    let result =
+        stage_daemon(build_id, service_name, repository_with_key, webhook_url).await;
 
     if let Err(e) = result {
         eprintln!("Error: {}", e);
@@ -52,7 +49,7 @@ pub async fn schedule_build(
             eprintln!("Failed to send log message to Discord");
         }
 
-        return Err(Box::new(e));
+        return Err(e);
     }
 
     Ok(())

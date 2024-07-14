@@ -1,0 +1,245 @@
+   Compiling libc v0.2.155
+   Compiling cfg-if v1.0.0
+   Compiling proc-macro2 v1.0.86
+   Compiling unicode-ident v1.0.12
+   Compiling autocfg v1.3.0
+   Compiling pin-project-lite v0.2.14
+   Compiling bytes v1.6.1
+   Compiling log v0.4.22
+   Compiling once_cell v1.19.0
+   Compiling futures-core v0.3.30
+   Compiling parking_lot_core v0.9.10
+   Compiling pkg-config v0.3.30
+   Compiling itoa v1.0.11
+   Compiling scopeguard v1.2.0
+   Compiling smallvec v1.13.2
+   Compiling version_check v0.9.4
+   Compiling fnv v1.0.7
+   Compiling serde v1.0.204
+   Compiling pin-utils v0.1.0
+   Compiling futures-task v0.3.30
+   Compiling futures-sink v0.3.30
+   Compiling vcpkg v0.2.15
+   Compiling tracing-core v0.1.32
+   Compiling futures-util v0.3.30
+   Compiling equivalent v1.0.1
+   Compiling hashbrown v0.14.5
+   Compiling lock_api v0.4.12
+   Compiling slab v0.4.9
+   Compiling typenum v1.17.0
+   Compiling tracing v0.1.40
+   Compiling quote v1.0.36
+   Compiling generic-array v0.14.7
+   Compiling syn v2.0.71
+   Compiling jobserver v0.1.31
+   Compiling num_cpus v1.16.0
+   Compiling socket2 v0.5.7
+   Compiling signal-hook-registry v1.4.2
+   Compiling mio v0.8.11
+   Compiling indexmap v2.2.6
+   Compiling bitflags v2.6.0
+   Compiling cc v1.1.3
+   Compiling parking_lot v0.12.3
+   Compiling httparse v1.9.4
+   Compiling http v1.1.0
+   Compiling percent-encoding v2.3.1
+   Compiling memchr v2.7.4
+   Compiling getrandom v0.2.15
+   Compiling openssl v0.10.64
+   Compiling foreign-types-shared v0.1.1
+   Compiling paste v1.0.15
+   Compiling tinyvec_macros v0.1.1
+   Compiling tinyvec v1.8.0
+   Compiling foreign-types v0.3.2
+   Compiling native-tls v0.2.12
+   Compiling atomic-waker v1.1.2
+   Compiling http-body v1.0.1
+   Compiling try-lock v0.2.5
+   Compiling ryu v1.0.18
+   Compiling zstd-safe v7.2.0
+   Compiling alloc-no-stdlib v2.0.4
+   Compiling local-waker v0.1.4
+   Compiling want v0.3.1
+   Compiling alloc-stdlib v0.2.2
+   Compiling aho-corasick v1.1.3
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.6
+   Compiling rand_core v0.6.4
+   Compiling form_urlencoded v1.2.1
+   Compiling http v0.2.12
+   Compiling ahash v0.8.11
+   Compiling futures-channel v0.3.30
+   Compiling powerfmt v0.2.0
+   Compiling openssl-sys v0.9.102
+   Compiling zstd-sys v2.0.12+zstd.1.5.6
+   Compiling adler v1.0.2
+   Compiling ppv-lite86 v0.2.17
+   Compiling openssl-probe v0.1.5
+   Compiling unicode-normalization v0.1.23
+   Compiling base64 v0.22.1
+   Compiling tower-service v0.3.2
+   Compiling unicode-bidi v0.3.15
+   Compiling regex-syntax v0.8.4
+   Compiling num-conv v0.1.0
+   Compiling time-core v0.1.2
+   Compiling tower-layer v0.3.2
+   Compiling idna v0.5.0
+   Compiling time-macros v0.2.18
+   Compiling rand_chacha v0.3.1
+   Compiling bytestring v1.3.1
+   Compiling miniz_oxide v0.7.4
+   Compiling actix-service v2.0.2
+   Compiling deranged v0.3.11
+   Compiling digest v0.10.7
+   Compiling brotli-decompressor v4.0.1
+   Compiling actix-utils v3.0.1
+   Compiling cookie v0.16.2
+   Compiling num-traits v0.2.19
+   Compiling crc32fast v1.4.2
+   Compiling encoding_rs v0.8.34
+   Compiling cpufeatures v0.2.12
+   Compiling regex-automata v0.4.7
+   Compiling mime v0.3.17
+   Compiling convert_case v0.4.0
+   Compiling portable-atomic v1.6.0
+   Compiling zerocopy v0.7.35
+   Compiling serde_json v1.0.120
+   Compiling regex-lite v0.1.6
+   Compiling time v0.3.36
+   Compiling brotli v6.0.0
+   Compiling tokio-macros v2.3.0
+   Compiling openssl-macros v0.1.1
+   Compiling pin-project-internal v1.1.5
+   Compiling tokio v1.38.0
+   Compiling actix-router v0.5.3
+   Compiling regex v1.10.5
+   Compiling pin-project v1.1.5
+   Compiling derive_more v0.99.18
+   Compiling sha1 v0.10.6
+   Compiling flate2 v1.0.30
+   Compiling serde_urlencoded v0.7.1
+   Compiling url v2.5.2
+   Compiling rand v0.8.5
+   Compiling local-channel v0.1.5
+   Compiling http-body-util v0.1.2
+   Compiling language-tags v0.3.2
+   Compiling tokio-util v0.7.11
+   Compiling tower v0.4.13
+   Compiling h2 v0.4.5
+   Compiling actix-rt v2.10.0
+   Compiling h2 v0.3.26
+   Compiling actix-codec v0.5.2
+   Compiling tokio-native-tls v0.3.1
+   Compiling lazy_static v1.5.0
+   Compiling anyhow v1.0.86
+   Compiling rustls-pki-types v1.7.0
+   Compiling unicode-width v0.1.13
+   Compiling httpdate v1.0.3
+   Compiling console v0.15.8
+   Compiling rustls-pemfile v2.1.2
+   Compiling actix-server v2.4.0
+   Compiling actix-web-codegen v4.3.0
+   Compiling actix-macros v0.2.4
+   Compiling iana-time-zone v0.1.60
+   Compiling unsafe-libyaml v0.2.11
+   Compiling sync_wrapper v1.0.1
+   Compiling number_prefix v0.4.0
+   Compiling ipnet v2.9.0
+   Compiling chrono v0.4.38
+   Compiling indicatif v0.17.8
+   Compiling hyper v1.4.1
+   Compiling serde_yaml v0.9.34+deprecated
+   Compiling hyper-util v0.1.6
+   Compiling serde_derive v1.0.204
+   Compiling hyper-tls v0.6.0
+   Compiling reqwest v0.12.5
+   Compiling dotenv v0.15.0
+   Compiling zstd v0.13.2
+   Compiling actix-http v3.8.0
+   Compiling actix-web v4.8.0
+   Compiling watchdog_rs v0.1.0 (/home/floris-xlx/watchdog_rs)
+warning: unused imports: `discord_log_webhook`, `message_template_schedule_build`, `system_msg_webhook`
+  --> src/api/client.rs:8:5
+   |
+8  |     discord_log_webhook,
+   |     ^^^^^^^^^^^^^^^^^^^
+9  |     message_template_schedule_build,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+10 |     system_msg_webhook
+   |     ^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `std::env`
+ --> src/build/stages/environment.rs:9:9
+  |
+9 |     use std::env;
+  |         ^^^^^^^^
+
+warning: unused import: `std::fs`
+  --> src/build/stages/environment.rs:10:9
+   |
+10 |     use std::fs;
+   |         ^^^^^^^
+
+warning: unused import: `std::path::Path`
+  --> src/build/stages/environment.rs:11:9
+   |
+11 |     use std::path::Path;
+   |         ^^^^^^^^^^^^^^^
+
+warning: unused import: `std::io::Error as IOError`
+ --> src/build/mod.rs:5:5
+  |
+5 | use std::io::Error as IOError;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::api::client::build`
+ --> src/build/mod.rs:7:5
+  |
+7 | use crate::api::client::build;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::build::stages::environment`
+ --> src/build/mod.rs:9:5
+  |
+9 | use crate::build::stages::environment;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `test_output`
+  --> src/build/stages/tests.rs:58:12
+   |
+58 |         Ok(test_output) => {
+   |            ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_test_output`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `build_output`
+  --> src/build/stages/compile.rs:66:12
+   |
+66 |         Ok(build_output) => {
+   |            ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_build_output`
+
+warning: unused variable: `service_name`
+  --> src/config.rs:36:10
+   |
+36 |     for (service_name, service_config) in services {
+   |          ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_service_name`
+
+warning: `watchdog_rs` (lib) generated 10 warnings (run `cargo fix --lib -p watchdog_rs` to apply 7 suggestions)
+    Finished `release` profile [optimized] target(s) in 30.04s
+[34;1mwatchdog_rs | Listening for requests...[0m
+[34mwatchdog_rs | Incoming git request: 
+Query(
+    Object {
+        "build_id": String("watchdog_rs"),
+        "build_key": String("cc6dc748-b903-44f3-a949-15a7347640d9"),
+    },
+)[0m
+[34mwatchdog_rs | Parsed git request: 
+build_key: Some("cc6dc748-b903-44f3-a949-15a7347640d9")
+build_id: "watchdog_rs"
+repository_url: Some("https://github.com/floris-xlx/watchdog_rs")
+first_event: Some(String("push"))[0m
+Error: No such file or directory (os error 2)
+[34;1m```watchdog_rs | Failed to setup environment for watchdog_rs```[0m
