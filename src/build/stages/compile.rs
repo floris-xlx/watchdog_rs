@@ -10,9 +10,9 @@ use crate::log::{
 /// Runs the cargo build --release command for the project
 pub fn run_build(repo_name: &str) -> Result<String, Error> {
     println!("Running cargo build --release...");
-    let command = format!("cd ~/watchdog_rs/~/deploys/{} && cargo build --release", repo_name);
+    let command = format!("cd deploys/xylex_api/services/{} && cargo build --release", repo_name);
     let copy_binary_command = format!(
-        "cp ~/watchdog_rs/~/deploys/{}/target/release/{} ~/watchdog_rs/~/deploys/{}/{}",
+        "cp deploys/{}/services/xylex_api/target/release/{} deploys/{}/services/xylex_api/{}",
         repo_name, repo_name, repo_name,repo_name
     );
     println!("Executing command: {}", command);
@@ -35,7 +35,7 @@ pub fn run_build(repo_name: &str) -> Result<String, Error> {
     println!("Standard Error: {}", stderr_output);
 
     std::thread::sleep(std::time::Duration::from_secs(12));
-    let binary_path: String = format!("~/watchdog_rs/~/deploys/{}/{}", repo_name, repo_name);
+    let binary_path: String = format!("deploys/{}/services/xylex_api/{}", repo_name, repo_name);
     let binary_file = shellexpand::tilde(&binary_path).to_string();
     if std::path::Path::new(&binary_file).exists() {
         println!("Build succeeded");

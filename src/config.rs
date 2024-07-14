@@ -13,6 +13,7 @@ pub struct ServiceConfig {
     pub WATCHDOG_RS_BUILD_ID: String,
     pub WATCHDOG_RS_RUST_BUILD_COMMAND: String,
     pub WATCHDOG_RS_RUST_TEST_COMMAND: String,
+    pub WATCHDOG_RS_SRC_DIRECTORY: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

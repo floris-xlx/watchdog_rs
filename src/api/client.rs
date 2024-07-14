@@ -40,6 +40,8 @@ pub async fn build(
     let first_event: Option<&serde_json::Value> =
         extract_first_event(&params, &body, "hook", "events", "push");
 
+    println!("{:#?}", body);
+
     let private: bool = match body.get("repository").and_then(|repo| repo.get("private")) {
         Some(Value::Bool(value)) => *value,
         Some(Value::String(value)) => match value.parse::<bool>() {

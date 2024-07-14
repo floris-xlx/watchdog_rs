@@ -24,7 +24,7 @@ pub fn go_to_deploy_directory() -> Result<(), Error> {
 /// delete old deploy repo if it exists
 pub fn delete_old_repo(repo_name: &str) -> Result<(), Error> {
     println!("Deleting old repository if it exists...");
-    let repo_path: String = format!("~/deploys/{}", repo_name);
+    let repo_path: String = format!("deploys/{}", repo_name);
     Command::new("rm").args(&["-rf", &repo_path]).status()?;
     println!("Old repository deleted if it existed.");
     Ok(())
@@ -39,7 +39,7 @@ pub fn clone_repo(repo_url: &str, repo_name: &str) -> Result<(), Error> {
             "--depth",
             "1",
             repo_url,
-            &format!("~/deploys/{}", repo_name),
+            &format!("deploys/{}", repo_name),
         ])
         .status()?;
 

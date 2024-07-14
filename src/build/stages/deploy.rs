@@ -23,7 +23,7 @@ pub fn run_deploy(service_name: &str) -> Result<String, Error> {
     println!("Stop Standard Error: {}", stderr_stop_output);
 
     // Start the service
-    let start_command = format!("nohup ~/watchdog_rs/~/deploys/{} &", service_name);
+    let start_command = format!("nohup deploys/{}/services/xylex_api/xylex_api &", service_name);
     println!("Executing command: {}", start_command);
     let start_output = Command::new("sh").arg("-c").arg(&start_command).output()?;
     println!("Start command executed. Processing output...");

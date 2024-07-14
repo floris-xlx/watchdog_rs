@@ -6,16 +6,16 @@ services:
     WATCHDOG_RS_BUILD_ID: "watchdog_rs"
     WATCHDOG_RS_RUST_TEST_COMMAND: "cargo test"
     WATCHDOG_RS_RUST_BUILD_COMMAND: "cargo build --release"
-    WATCHDOG_RS_SRC_DIRECTORY: "xylex/services/watchdog_rs"
+    WATCHDOG_RS_SRC_DIRECTORY: "services/watchdog_rs"
 
-  xylex_cron:
+  xylex_api:
     WATCHDOG_RS_BUILD_KEY: "bddfc6fb-c345-4af6-96be-fba0f53d4b76"
     WATCHDOG_RS_DISCORD_WEBHOOK: "https://discord.com/api/webhooks/1261391310628192418/4bjvCATqfKN0u3FpHg6gJK1xUlwdLnbVKncsbvCI5T-28Fv9V_b_3XGRjmkElxgbNZu6"
-    WATCHDOG_RS_REPOSITORY_URL: "https://github.com/floris-xlx/watchdog_rs"
-    WATCHDOG_RS_BUILD_ID: "xylex_cron"
+    WATCHDOG_RS_REPOSITORY_URL: "https://github.com/floris-xlx/xylex"
+    WATCHDOG_RS_BUILD_ID: "xylex_api"
     WATCHDOG_RS_RUST_TEST_COMMAND: "cargo test"
     WATCHDOG_RS_RUST_BUILD_COMMAND: "cargo build --release"
-    WATCHDOG_RS_SRC_DIRECTORY: "xylex/services/xylex_api"
+    WATCHDOG_RS_SRC_DIRECTORY: "services/xylex_api"
 
 
   # Add more services as needed

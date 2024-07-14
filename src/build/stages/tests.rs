@@ -9,8 +9,8 @@ pub fn run_tests(repo_name: &str) -> Result<String, Error> {
     println!("Running tests...");
     // only when running cargo r and not as standalone binary
     // then ~/watchdog_rs/~/ will b replaced with ~/ in the command
-    
-    let command = format!("cd ~/watchdog_rs/~/deploys/{} && cargo test && ls", repo_name);
+
+    let command = format!("cd deploys/{}/services/{} && cargo test && ls", repo_name, repo_name);
     println!("Executing command: {}", command);
 
     let output = Command::new("sh")
