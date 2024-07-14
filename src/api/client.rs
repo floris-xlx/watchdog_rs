@@ -4,10 +4,17 @@ use serde_json::{json, Value};
 
 use crate::config::parse_watchdog_rs_yml;
 use crate::git::repo_url_builder::repository_url_builder;
+use crate::log::{
+    discord_log_webhook,
+    message_template_schedule_build,
+    system_msg_webhook
+};
 use crate::utils::print;
 use crate::api::parsing::{
     extract_first_event, extract_nested_param, extract_param, is_authorized,
 };
+use crate::build::schedule_build;
+
 
 #[get("/ping")]
 pub async fn index() -> impl Responder {
@@ -72,9 +79,26 @@ pub async fn build(
 
                         let url_with_key: String = repository_url_builder(&repository_url, private).await;
 
+
+                        // schedule the build
+                        let webhook_url: &str = &service_config.WATCHDOG_RS_DISCORD_WEBHOOK;
+                        let result = schedule_build(
+                            &repository_url,
+                            &build_id,
+                            &service_name,
+                            webhook_url,
+                            &url_with_key,
+                        ).await;
+
+                        if result.is_err() {
+                            return HttpResponse::InternalServerError().json(json!(
+                                {"error": "Internal Server Error"}
+                            ));
+                        }
+
                         return HttpResponse::Ok().json(json!(
                             {
-                                "message": "build!",
+                                "message": "scheduled build",
                                 "build_id": build_id,
                                 "repository_url": repository_url,
                                 "service_name": service_name,

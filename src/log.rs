@@ -34,12 +34,7 @@ pub async fn system_msg_webhook(message: &str, webhook_url: &str) -> Result<(), 
 
     client
         .post(webhook_url)
-        .body(
-            json!({
-                "content": message
-            })
-            .to_string(),
-        )
+        .body(message.to_string())
         .header("Content-Type", "application/json")
         .send()
         .await?;
@@ -57,37 +52,37 @@ pub fn message_template_schedule_build(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[1/6] | ⏳ Scheduling new build",
-            "description": format!("I'm scheduling a new build for `{}`", build_id),
-            "color": 5975807,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[1/8] | ⏳ Scheduling new build",
+        "description": format!("I'm scheduling a new build for `{}`", build_id),
+        "color": 5975807,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });
@@ -105,37 +100,37 @@ pub fn message_template_build_succeeded(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[4/6] | ✅ Build succeeded",
-            "description": format!("Build `{}` succeeded", build_id),
-            "color": 3066993,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[6/8] | ✅ Build succeeded",
+        "description": format!("Build `{}` succeeded", build_id),
+        "color": 3066993,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });
@@ -153,37 +148,37 @@ pub fn message_template_build_failed(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[4/6] | ❌ Build failed",
-            "description": format!("Build `{}` failed", build_id),
-            "color": 15158332,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[6/8] | ❌ Build failed",
+        "description": format!("Build `{}` failed", build_id),
+        "color": 15158332,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });
@@ -201,37 +196,37 @@ pub fn message_template_trying_to_deploy(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[5/6] 🚀 Trying to deploy",
-            "description": format!("Trying to deploy build `{}`", build_id),
-            "color": 15844367,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[7/8] 🚀 Trying to deploy",
+        "description": format!("Trying to deploy build `{}`", build_id),
+        "color": 15844367,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });
@@ -249,37 +244,37 @@ pub fn message_template_successfully_deployed(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[6/6] | ✅ Successfully deployed",
-            "description": format!("Successfully deployed build `{}`", build_id),
-            "color": 3066993,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[8/8] | ✅ Successfully deployed",
+        "description": format!("Successfully deployed build `{}`", build_id),
+        "color": 3066993,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });
@@ -297,37 +292,37 @@ pub fn message_template_failed_to_deploy(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[5/6] | ❌ Failed to deploy",
-            "description": format!("Failed to deploy build `{}`", build_id),
-            "color": 15158332,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[8/8] | ❌ Failed to deploy",
+        "description": format!("Failed to deploy build `{}`", build_id),
+        "color": 15158332,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });
@@ -345,37 +340,37 @@ pub fn message_template_starting_tests(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[2/6] | 🧪 Starting tests",
-            "description": format!("Starting tests for build `{}`", build_id),
-            "color": 3447003,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[4/8] | 🧪 Starting tests",
+        "description": format!("Starting tests for build `{}`", build_id),
+        "color": 3447003,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });
@@ -393,37 +388,37 @@ pub fn message_template_tests_passed(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[3/6] | ✅ Tests passed",
-            "description": format!("Tests passed for build `{}`", build_id),
-            "color": 3066993,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[5/8] | ✅ Tests passed",
+        "description": format!("Tests passed for build `{}`", build_id),
+        "color": 3066993,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });
@@ -441,37 +436,133 @@ pub fn message_template_tests_failed(
     let message = json!({
         "content": null,
         "embeds": [
-          {
-            "title": "[3/6] | ❌ Tests failed",
-            "description": format!("Tests failed for build `{}`", build_id),
-            "color": 15158332,
-            "fields": [
-              {
-                "name": "Repository URL",
-                "value": repository_url,
-                "inline": true
-              },
-              {
-                "name": "build_id",
-                "value": build_id,
-                "inline": true
-              },
-              {
-                "name": "service_name",
-                "value": service_name,
-                "inline": true
-              }
-            ],
-            "author": {
-              "name": "watchdog_rs",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        {
+        "title": "[5/8] | ❌ Tests failed",
+        "description": format!("Tests failed for build `{}`", build_id),
+        "color": 15158332,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
             },
-            "footer": {
-              "text": "Powered by Xylex",
-              "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
             },
-            "timestamp": current_timestamp
-          }
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
+        ],
+        "attachments": []
+    });
+
+    message.to_string()
+}
+
+pub fn message_template_setting_up_env(
+    build_id: &str,
+    repository_url: &str,
+    service_name: &str,
+) -> String {
+    let current_timestamp = Utc::now().to_rfc3339();
+
+    let message = json!({
+        "content": null,
+        "embeds": [
+        {
+        "title": "[2/8] | 🔧 Setting up environment",
+        "description": format!("Setting up environment for build `{}`", build_id),
+        "color": 3447003,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
+            },
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
+            },
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
+        ],
+        "attachments": []
+    });
+
+    message.to_string()
+}
+
+pub fn message_template_copying_repository(
+    build_id: &str,
+    repository_url: &str,
+    service_name: &str,
+) -> String {
+    let current_timestamp = Utc::now().to_rfc3339();
+
+    let message = json!({
+        "content": null,
+        "embeds": [
+        {
+        "title": "[3/8] | 📂 Cloning repository",
+        "description": format!("Cloning repository for build `{}`", build_id),
+        "color": 10181046,
+        "fields": [
+            {
+            "name": "Repository URL",
+            "value": repository_url,
+            "inline": true
+            },
+            {
+            "name": "build_id",
+            "value": build_id,
+            "inline": true
+            },
+            {
+            "name": "service_name",
+            "value": service_name,
+            "inline": true
+            }
+        ],
+        "author": {
+            "name": "watchdog_rs",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "footer": {
+            "text": "Powered by Xylex",
+            "icon_url": "https://xylex.ams3.cdn.digitaloceanspaces.com/profilePics/watchdog_rs.png"
+        },
+        "timestamp": current_timestamp
+        }
         ],
         "attachments": []
     });

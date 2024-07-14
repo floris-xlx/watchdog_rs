@@ -57,3 +57,22 @@ pub async fn repository_url_builder(repository_url: &str, private: bool) -> Stri
 
     url
 }
+
+
+
+pub async fn get_repo_name_from_url(repository_url: &str) -> String {
+    let re: Regex = match Regex::new(r"https://github.com/([^/]+/[^/]+)") {
+        Ok(regex) => regex,
+        Err(_) => {
+            print::print_red("Failed to compile regex for repository URL");
+            return String::new();
+        },
+    };
+
+    if let Some(captures) = re.captures(repository_url) {
+        captures[1].to_string()
+    } else {
+        print::print_red("Failed to extract repository name from URL");
+        String::new()
+    }
+}

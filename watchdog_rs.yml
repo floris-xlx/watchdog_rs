@@ -6,6 +6,7 @@ services:
     WATCHDOG_RS_BUILD_ID: "xylex_api"
     WATCHDOG_RS_RUST_TEST_COMMAND: "cargo test"
     WATCHDOG_RS_RUST_BUILD_COMMAND: "cargo build --release"
+    WATCHDOG_RS_SRC_DIRECTORY: "xylex/services/xylex_api"
 
   xylex_cron:
     WATCHDOG_RS_BUILD_KEY: "bddfc6fb-c345-4af6-96be-fba0f53d4b76"
@@ -14,6 +15,7 @@ services:
     WATCHDOG_RS_BUILD_ID: "xylex_cron"
     WATCHDOG_RS_RUST_TEST_COMMAND: "cargo test"
     WATCHDOG_RS_RUST_BUILD_COMMAND: "cargo build --release"
+    WATCHDOG_RS_SRC_DIRECTORY: "xylex/services/xylex_api"
 
 
   # Add more services as needed

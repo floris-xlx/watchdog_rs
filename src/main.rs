@@ -35,10 +35,10 @@ async fn main() -> Result<()> {
         .expect("WATCHDOG_RS_PORT must be a valid u16");
 
     if var("WATCHDOG_RS_PORT").is_err() {
-        let message = format!("WATCHDOG_RS_PORT ENV VAR wasn't set, defaulting to {}", default_port);
+        let message: String = format!("WATCHDOG_RS_PORT ENV VAR wasn't set, defaulting to {}", default_port);
         set_progress_message(&progress, &message);
     } else {
-        let message = format!("Server attempting to bind to port {}", port);
+        let message: String = format!("Server attempting to bind to port {}", port);
         set_progress_message(&progress, &message);
     }
 
@@ -46,7 +46,7 @@ async fn main() -> Result<()> {
         .bind(("127.0.0.1", port))?
         .run();
 
-    let message = format!("✔️   Server successfully started on port {}", port);
+    let message: String = format!("✔️   Server successfully started on port {}", port);
     progress.finish_with_message(format!("{}", message));
 
     print::print_blue("Listening for requests...");
