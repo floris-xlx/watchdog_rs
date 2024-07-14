@@ -28,3 +28,15 @@ pub fn parse_watchdog_rs_yml(
 
     Ok(config.services.into_iter().collect())
 }
+
+pub fn get_webhook_url_by_repository(
+    services: Vec<(String, ServiceConfig)>,
+    repository_url: &str,
+) -> Option<String> {
+    for (service_name, service_config) in services {
+        if service_config.WATCHDOG_RS_REPOSITORY_URL == repository_url {
+            return Some(service_config.WATCHDOG_RS_DISCORD_WEBHOOK);
+        }
+    }
+    None
+}

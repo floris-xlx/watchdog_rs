@@ -3,12 +3,18 @@ use dotenv::dotenv;
 use indicatif::{ProgressBar, ProgressStyle};
 use std::env::var;
 use std::io::Result;
+
+
+// crate imports
 use watchdog_rs::api::client::{build, index};
+use watchdog_rs::utils::print;
+
 
 fn set_progress_message(progress: &ProgressBar, message: &str) {
     progress.set_message(message.to_string());
     progress.inc(1);  // Ensure the progress bar updates immediately with the new message
 }
+
 
 #[actix_web::main]
 async fn main() -> Result<()> {
@@ -42,7 +48,8 @@ async fn main() -> Result<()> {
 
     let message = format!("✔️   Server successfully started on port {}", port);
     progress.finish_with_message(format!("{}", message));
-    println!("watchdog_rs: Listening for requests...");
+
+    print::print_blue("Listening for requests...");
 
     server.await
 }
